@@ -1,0 +1,101 @@
+// 定义一个将像素写法识别为rem写法的方法
+$animationTime:0.5s;
+$animationType: ease-out;
+$ratio:375/10;
+
+@function px2rem($px) {
+    @return $px / $ratio+rem;
+}
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@mixin right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+//省略符号css
+@mixin ellipsis {
+    text-overflow: ellipsis; //字数超出使用省略号
+    overflow: hidden;
+    white-space: nowrap; //不换行
+}
+
+@mixin ellipsis2($line) {
+    line-height: px2rem(16);
+    display: -webkit-box;
+    -webkit-box-orient: vertical; //垂直排列
+    -webkit-line-clamp: $line; //行数$line行
+    white-space: normal; //允许正常换行
+    overflow: hidden; //超出2行hidden
+    text-overflow: ellipsis; //文字超出省略号
+    word-break: keep-all; //换行保留单词
+}
+
+@mixin columnCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin columnTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  @mixin columnTopLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  @mixin columnLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  @mixin scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .icon{
+    color: #666;
+    font-size: px2rem(16);
+  }
+
+  .title{
+    color: #666;
+    font-size: px2rem(16);
+    font-weight: bold;
+  }
+
+  @mixin absCenter{
+    position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+  }
